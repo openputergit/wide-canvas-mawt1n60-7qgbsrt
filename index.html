@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipMaster - The Ultimate Video Clipping Ecosystem</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #6B7280;
+            --accent: #34D399;
+        }
+        
+        .clay-effect {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.1),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f0f2f5;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div id="app" class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="clay-effect hidden lg:block w-64 p-6 m-4 h-[calc(100vh-2rem)] sticky top-4">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="bi bi-camera-reels text-3xl text-[#34D399]"></i>
+                <h1 class="text-2xl font-bold text-[#6B7280]">ClipMaster</h1>
+            </div>
+            
+            <nav class="space-y-4">
+                <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#34D399]/10 text-[#6B7280]">
+                    <i class="bi bi-house-door"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#34D399]/10 text-[#6B7280]">
+                    <i class="bi bi-scissors"></i>
+                    <span>Clip Editor</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#34D399]/10 text-[#6B7280]">
+                    <i class="bi bi-graph-up"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#34D399]/10 text-[#6B7280]">
+                    <i class="bi bi-people"></i>
+                    <span>Community</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-[#34D399]/10 text-[#6B7280]">
+                    <i class="bi bi-wallet2"></i>
+                    <span>Earnings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4">
+            <!-- Mobile Header -->
+            <header class="clay-effect lg:hidden flex justify-between items-center p-4 mb-4 rounded-xl">
+                <div class="flex items-center gap-2">
+                    <i class="bi bi-camera-reels text-2xl text-[#34D399]"></i>
+                    <h1 class="text-xl font-bold text-[#6B7280]">ClipMaster</h1>
+                </div>
+                <button @click="toggleMenu" class="text-[#6B7280]">
+                    <i class="bi bi-list text-2xl"></i>
+                </button>
+            </header>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div class="clay-effect p-6 rounded-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-[#6B7280]">Money Earned</h3>
+                        <i class="bi bi-currency-dollar text-[#34D399]"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-[#34D399]">$1,234.56</p>
+                    <p class="text-sm text-gray-500">+12.3% from last month</p>
+                </div>
+
+                <div class="clay-effect p-6 rounded-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-[#6B7280]">Views Left</h3>
+                        <i class="bi bi-eye text-[#34D399]"></i>
+                    </div>
+                    <p class="text-3xl font-bold text-[#6B7280]">2,345</p>
+                    <p class="text-sm text-gray-500">Until next milestone</p>
+                </div>
+
+                <div class="clay-effect p-6 rounded-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-[#6B7280]">Progress</h3>
+                        <i class="bi bi-graph-up-arrow text-[#34D399]"></i>
+                    </div>
+                    <div class="relative h-20 w-20 mx-auto">
+                        <svg class="progress-ring" width="80" height="80">
+                            <circle
+                                stroke="#e5e7eb"
+                                stroke-width="8"
+                                fill="transparent"
+                                r="32"
+                                cx="40"
+                                cy="40"
+                            />
+                            <circle
+                                stroke="#34D399"
+                                stroke-width="8"
+                                fill="transparent"
+                                r="32"
+                                cx="40"
+                                cy="40"
+                                stroke-dasharray="201.06"
+                                stroke-dashoffset="50.265"
+                            />
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-lg font-bold text-[#6B7280]">
+                            75%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Clips -->
+            <div class="clay-effect p-6 rounded-xl mb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#6B7280]">Recent Clips</h2>
+                    <button class="text-[#34D399] hover:underline">View All</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div v-for="i in 3" class="rounded-lg overflow-hidden bg-gray-100">
+                        <div class="aspect-video bg-gray-200"></div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-[#6B7280] mb-2">Amazing Gaming Moment #{{i}}</h3>
+                            <div class="flex justify-between text-sm text-gray-500">
+                                <span>1.2K views</span>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    menuOpen: false
+                }
+            },
+            methods: {
+                toggleMenu() {
+                    this.menuOpen = !this.menuOpen
+                }
+            }
+        }).mount('#app')
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
